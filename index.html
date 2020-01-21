@@ -183,27 +183,34 @@
 
 <script>
   var fireballSize = 22;
-
-  var getFireballSpeed = function (left) {
-    if (left) {
-        return 5;
-    }
-    return 2;
-  };
-
   var wizardSpeed = 3;
   var wizardWidth = 70;
+  var proportion = 1.337;
+
+  var getFireballSpeed = function (left) {
+    var speed = {
+      fireball: 3.5,
+      wind: 1.5
+    };
+    left ? speed.fireball += speed.wind : speed.fireball -= speed.wind;
+    console.log('Скорость фаербола = ' + speed.fireball);
+    return speed.fireball;
+  };
 
   var getWizardHeight = function () {
-      return 1.337 * wizardWidth;
+      return proportion * wizardWidth;
   };
 
   var getWizardX = function (width) {
-      return 107;
+      var wizzardX = width / 2;
+      console.log('Ширина игрового поля = ' + width + 'px, середина по оси X = ' + wizzardX + 'px');
+      return wizzardX;
   };
 
   var getWizardY = function (height) {
-      return 77;
+      var wizzardY = height / 2;
+      console.log('Высота игрового поля = ' + height + 'px, середина по оси Y = ' + wizzardY + 'px');
+      return wizzardY;
   };
 </script>
 <script src="js/game.js"></script>
