@@ -45,10 +45,6 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов: ', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 5);
 
   for (var i = 0; i < names.length; i++) {
-    // Запись в переменную namePlayer имя игрока
-    var namePlayer = names[i];
-    // Запись в переменную timesPlayer имя игрока
-    var timesPlayer = Math.round(times[i]);
     // Вызов функции для вычисления максимального времени
     var maxTime = getMaxElement(times);
     // Вычисление координаты X для построения столбца учитывая смещение
@@ -59,11 +55,11 @@ window.renderStatistics = function (ctx, names, times) {
     // Цвет заливки
     ctx.fillStyle = '#000000';
     // Выводим имя игрока
-    ctx.fillText(namePlayer, newCoordinateX, (CLOUD_Y + CLOUD_HEIGHT) - GAP - TEXT_HEIGHT);
+    ctx.fillText(names[i], newCoordinateX, (CLOUD_Y + CLOUD_HEIGHT) - GAP - TEXT_HEIGHT);
     // Выводим время игрока
-    ctx.fillText(timesPlayer, newCoordinateX, (CLOUD_Y + CLOUD_HEIGHT) - GAP - TEXT_HEIGHT - GAP - currentHistogramHeight - GAP - TEXT_HEIGHT);
+    ctx.fillText(Math.round(times[i]), newCoordinateX, (CLOUD_Y + CLOUD_HEIGHT) - GAP - TEXT_HEIGHT - GAP - currentHistogramHeight - GAP - TEXT_HEIGHT);
     // Раскрашиваем колонку игрока
-    if (namePlayer === 'Вы') {
+    if (names[i] === 'Вы') {
       ctx.fillStyle = '#ff0000';
     } else {
       // Насыщенность задаём случайным образом
