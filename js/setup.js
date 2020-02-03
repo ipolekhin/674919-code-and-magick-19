@@ -1,6 +1,5 @@
 'use strict';
 
-var wizards = [];
 var arrLength = 4;
 var fName = ['Иван', 'Хуан Себастьян', 'Мария', 'Кристоф', 'Виктор', 'Юлия', 'Люпита', 'Вашингтон'];
 var lName = ['да Марья', 'Верон', 'Мирабелла', 'Вальц', 'Онопко', 'Топольницкая', 'Нионго', 'Ирвинг'];
@@ -23,20 +22,19 @@ var generateArrNumber = function (arr) {
   return arr[length - 1];
 };
 
-var renderWizard = function (wizard) {
+var renderWizard = function () {
   var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  wizardElement.querySelector('.setup-similar-label').textContent = generateArrNumber(fName) + ' ' + generateArrNumber(lName);;
+  wizardElement.querySelector('.setup-similar-label').textContent = generateArrNumber(fName) + ' ' + generateArrNumber(lName);
   wizardElement.querySelector('.wizard-coat').style.fill = generateArrNumber(coatColor);
   wizardElement.querySelector('.wizard-eyes').style.fill = generateArrNumber(eyesColor);
 
   return wizardElement;
 };
 
-
 var fragment = document.createDocumentFragment();
 for (var i = 0; i < arrLength; i++) {
-  fragment.appendChild(renderWizard(arrLength[i]));
+  fragment.appendChild(renderWizard());
 }
 similarListElement.appendChild(fragment);
 
