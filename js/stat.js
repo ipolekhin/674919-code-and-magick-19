@@ -29,12 +29,14 @@ var getMaxElement = function (arr) {
         maxElement = arr[i];
       }
     }
-    return maxElement;
   }
-  return 'Передан пустой массив!';
+  return maxElement ? maxElement : 'Передан пустой массив!';
 };
 
 window.renderStatistics = function (ctx, names, times) {
+  // Вызов функции для вычисления максимального времени
+  var maxTime = getMaxElement(times);
+
   // Вызов функции для рисования, рисуем тень облака
   renderCloud(ctx, CLOUD_X + GAP, CLOUD_Y + GAP, 'rgba(0, 0, 0, 0.7)');
   // Вызов функции для рисования, рисуем белое облако
@@ -45,8 +47,6 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillText('Список результатов: ', CLOUD_X + GAP * 2, CLOUD_Y + GAP * 5);
 
   for (var i = 0; i < names.length; i++) {
-    // Вызов функции для вычисления максимального времени
-    var maxTime = getMaxElement(times);
     // Вычисление координаты X для построения столбца учитывая смещение
     var newCoordinateX = CLOUD_X + GAP * 4 + (HISTOGRAM_WIDTH + GAP * 5) * i;
     // Строим высоту гистограммы каждого игрока в зависимости от его времени
