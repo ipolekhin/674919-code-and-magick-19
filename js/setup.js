@@ -66,11 +66,11 @@ var generateArrNumber = function (arr) {
 // Функция, которая заполняет массив 'wizards' данными
 var fillArray = function () {
   for (var i = 0; i < arrLength; i++) {
-    wizards[i] = {
+    wizards.push({
       name: generateArrNumber(fName) + ' ' + generateArrNumber(lName),
       coatColor: generateArrNumber(coatColor),
       eyesColor: generateArrNumber(eyesColor)
-    };
+    });
   }
 };
 fillArray();
